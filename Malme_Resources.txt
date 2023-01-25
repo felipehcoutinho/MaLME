@@ -1,0 +1,29 @@
+#Resources for learning the basics of python and ML with python
+https://www.w3schools.com/python
+https://www.w3schools.com/python/python_ml_getting_started.asp
+
+#Resources for learning ML
+https://developers.google.com/machine-learning
+
+#Resources for learning the basics of R
+https://www.w3schools.com/r/
+http://www.sthda.com/english/wiki/r-basics-quick-and-easy
+https://www.statmethods.net/r-tutorial/index.html
+https://www.youtube.com/watch?v=_V8eKsto3Ug
+
+#Towards data science
+https://towardsdatascience.com/tagged/model-performance
+https://towardsdatascience.com/precision-and-recall-a-comprehensive-guide-with-practical-examples-71d614e3fc43
+https://towardsdatascience.com/
+
+#Recommended reading
+1. Crisci, C., Ghattas, B. & Perera, G. A review of supervised machine learning algorithms and
+their applications to ecological data. Ecol. Modell. 240, 113–122 (2012).
+2. Larsen, P. E., Field, D. & Gilbert, J. a. Predicting bacterial community assemblages using an
+artificial neural network approach. Nat. Methods 9, 621–5 (2012).
+3. Larsen, P. E. et al. Satellite remote sensing data can be used to model marine microbial
+metabolite turnover. ISME J. 9, 166–179 (2015).
+4. Cavicchioli, R. et al. Scientists’ warning to humanity: microorganisms and climate change. Nat.
+Rev. Microbiol. 17, 569–586 (2019).
+5. Sunagawa, S. et al. Tara Oceans: towards global ocean ecosystems biology. Nat. Rev. Microbiol.
+18, 428–445 (2020).
