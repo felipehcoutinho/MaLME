@@ -16,6 +16,12 @@ https://towardsdatascience.com/tagged/model-performance
 https://towardsdatascience.com/precision-and-recall-a-comprehensive-guide-with-practical-examples-71d614e3fc43
 https://towardsdatascience.com/
 
+#ROC
+https://en.wikipedia.org/wiki/Receiver_operating_characteristic
+
+#Precision, Recall and F1 Score with caret
+https://rdrr.io/cran/caret/man/recall.html
+
 #Recommended reading
 1. Crisci, C., Ghattas, B. & Perera, G. A review of supervised machine learning algorithms and
 their applications to ecological data. Ecol. Modell. 240, 113–122 (2012).
