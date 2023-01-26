@@ -16,6 +16,20 @@ https://towardsdatascience.com/tagged/model-performance
 https://towardsdatascience.com/precision-and-recall-a-comprehensive-guide-with-practical-examples-71d614e3fc43
 https://towardsdatascience.com/
 
+#A very brienf intro to ANN:
+https://www.youtube.com/watch?v=bfmFfD2RIcg
+https://www.youtube.com/watch?v=Mph0cWZsoV4&list=PLM8lYG2MzHmQn55ii0duXdO9QSoDF5myF
+https://developers.google.com/machine-learning/crash-course/introduction-to-neural-networks/video-lecture
+
+#Hyperparameter tuning
+https://www.youtube.com/watch?v=r2TvNmAxiCU&list=PLM8lYG2MzHmQn55ii0duXdO9QSoDF5myF&index=8
+https://www.youtube.com/watch?v=ttE0F7fghfk
+https://www.youtube.com/watch?v=EehRcPo1M-Q
+https://www.youtube.com/watch?v=5Xh9FusE8iE
+
+#Overfitting
+https://www.youtube.com/watch?v=Anq4PgdASsc
+
 #ROC
 https://en.wikipedia.org/wiki/Receiver_operating_characteristic
 
