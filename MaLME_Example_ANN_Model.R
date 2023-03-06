@@ -20,7 +20,7 @@ seed_num<-12223
 set.seed(seed_num)
 
 #Assign samples to the test and validation sets
-train_set_row_nums<-createDataPartition(sub_example_df$Shannon_Diversity,p=0.5,list=FALSE)
+train_set_row_nums<-createDataPartition(sub_example_df$Shannon_Diversity,p=0.8,list=FALSE)
 
 sub_example_df_train<-sub_example_df[train_set_row_nums,]
 
