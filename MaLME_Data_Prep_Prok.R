@@ -66,3 +66,17 @@ colnames(raw_predictor_df)[1]<-"MG_UID"
 
 write.table(raw_predictor_df,file="/mnt/lustre/scratch/fcoutinho/MaLME/Marine_Prokaryote_Communities_Sample_Metadata.tsv",sep="\t",append=FALSE,row.names=FALSE,col.names=TRUE,quote=FALSE)
 
+#Calculate diversity metrics
+response_file<-"/mnt/lustre/scratch/fcoutinho/MaLME/Marine_Prokaryote_Communities_Percentage_Abundance_Data.tsv"
+
+raw_response_df<-read.table(file=response_file,sep="\t",header=TRUE,quote="",comment="",stringsAsFactors=TRUE,row.names=1,check.names=FALSE)
+
+source("/mnt/smart/users/fcoutinho/Repos/ICM_Code/Microbiome_Analysis.R")
+
+div_metrics<-calc_div(as.data.frame(t(raw_response_df[,9:185])))
+
+div_metrics<-merge(div_metrics,raw_predictor_df,by.x="Sample_UID",by.y="MG_UID",all.x=TRUE)
+
+example_df<-subset(div_metrics,select=c("Sample_UID","Shannon_Diversity_Index","Temperature","Oxygen","Depth.nominal","ChlorophyllA","Salinity","Ammonium.5m","Iron.5m"))
+
+write.table(example_df,file="/mnt/smart/users/fcoutinho/Repos/MaLME/Example_ANN_Input_Data_2_Prok.tsv",sep="\t",append=FALSE,row.names=FALSE,col.names=TRUE,quote=FALSE)

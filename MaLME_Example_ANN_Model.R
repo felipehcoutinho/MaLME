@@ -1,5 +1,5 @@
 #Read in the example dataset table as a Data Frame
-example_df<-read.table(file="Example_ANN_Input_Data_1.tsv",sep="\t",header=TRUE,quote="",comment="",stringsAsFactors=TRUE)
+example_df<-read.table(file="Example_ANN_Input_Data_2_Prok.tsv",sep="\t",header=TRUE,quote="",comment="",stringsAsFactors=TRUE,row.names=1)
 
 #Print a summary of the dataframe
 summary(example_df)
@@ -15,12 +15,19 @@ library(nnet)
 #Load the caret library
 library(caret)
 
+#Rename response variable
+colnames(sub_example_df)[which(colnames(sub_example_df) == "Shannon_Diversity_Index")]<-"Response_Variable"
+
+#Z-transform the data
+sub_example_df<-as.data.frame(scale(sub_example_df,center=TRUE,scale=TRUE))
+
 #Set a seed number to make your results reproducible
-seed_num<-12223
+#seed_num<-12223
+seed_num<-666
 set.seed(seed_num)
 
 #Assign samples to the test and validation sets
-train_set_row_nums<-createDataPartition(sub_example_df$Shannon_Diversity,p=0.8,list=FALSE)
+train_set_row_nums<-createDataPartition(sub_example_df$Response_Variable,p=0.5,list=FALSE)
 
 sub_example_df_train<-sub_example_df[train_set_row_nums,]
 
@@ -33,24 +40,24 @@ summary(sub_example_df_train)
 summary(sub_example_df_valid)
 
 #Test if the differences in the values of the response variable are significantly different between train and test sets
-wilcox.test(sub_example_df_train$Shannon_Diversity,sub_example_df_valid$Shannon_Diversity,paired=FALSE,exact=FALSE)
+wilcox.test(sub_example_df_train$Response_Variable,sub_example_df_valid$Response_Variable,paired=FALSE,exact=FALSE)
 
 #Train a model using the training set only
 set.seed(seed_num)
 
-trained_net_ts<-nnet(Shannon_Diversity ~ Temperature+Depth+Chlorophyll_A+Salinity+Ammonium_5m,sub_example_df_train,size=3,linout=TRUE,maxit=1000)
+trained_net_ts<-nnet(Response_Variable ~ Temperature+Oxygen+Depth.nominal+ChlorophyllA+Salinity+Ammonium.5m+Iron.5m,sub_example_df_train,size=3,linout=TRUE,maxit=10)
 
 #Check the contents of the output ANN object
 ls(trained_net_ts)
+
+#Check output values
+summary(trained_net_ts$fitted.values)
 
 #Load the Metrics library to evaluate model performance
 library(Metrics)
 
 #Evaluate the performance of the model on the training set
-rmse(sub_example_df_train$Shannon_Diversity,trained_net_ts$fitted.values)
-
-#Calculate Pearson R between measured and predicted values of the model using the training set
-cor.test(sub_example_df_train$Shannon_Diversity,trained_net_ts$fitted.values, method="pearson")
+postResample(sub_example_df_train$Responsgit --hee_Variable,trained_net_ts$fitted.values)
 
 #Get predictions for the validation set
 valid_preds<-predict(trained_net_ts,sub_example_df_valid,type=c("raw"))
@@ -58,17 +65,15 @@ valid_preds<-predict(trained_net_ts,sub_example_df_valid,type=c("raw"))
 summary(valid_preds)
 
 #Evaluate the performance of the model on the validation set
-rmse(sub_example_df_valid$Shannon_Diversity,valid_preds)
+postResample(valid_preds,sub_example_df_valid$Response_Variable)
 
 set.seed(seed_num)
 
 #Train the network on full set
-trained_net<-nnet(Shannon_Diversity ~ Temperature+Depth+Chlorophyll_A+Salinity+Ammonium_5m,sub_example_df,size=3,linout=TRUE,maxit=1000)
+trained_net<-nnet(Response_Variable ~ Temperature+Oxygen+Depth.nominal+ChlorophyllA+Salinity+Ammonium.5m+Iron.5m,sub_example_df,size=3,linout=TRUE,maxit=10)
 
 #Evaluate the performance of the new model on the full set
-rmse(sub_example_df$Shannon_Diversity,trained_net$fitted.values)
-
-cor.test(sub_example_df$Shannon_Diversity,trained_net$fitted.values, method="pearson")
+postResample(trained_net$fitted.values, sub_example_df$Response_Variable)
 
 #Load the ANN interpretation library
 library(NeuralNetTools)
@@ -78,11 +83,3 @@ importance_olden<-olden(trained_net,bar_plot=FALSE)
 
 #Look at the outpt and identify the most important predictor
 importance_olden
-
-#Calculate RMSE
-rmse(sub_example_df$Shannon_Diversity,trained_net$fitted.values)
-
-#Calculate Pearson R between measured and predicted values
-cor.test(sub_example_df$Shannon_Diversity,trained_net$fitted.values,method="pearson")
-
-cor.test(sub_example_df_valid$Shannon_Diversity,valid_preds)
