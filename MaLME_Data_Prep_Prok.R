@@ -54,15 +54,18 @@ colnames(perc_prok_response_full_df)
 
 write.table(perc_prok_response_full_df[,-1],file="/mnt/lustre/scratch/fcoutinho/MaLME/Marine_Prokaryote_Communities_Percentage_Abundance_Data.tsv",sep="\t",append=FALSE,row.names=FALSE,col.names=TRUE,quote=FALSE)
 
+write.table(perc_prok_response_full_df[,1:8],file="/mnt/smart/users/fcoutinho/Repos/MaLME/Marine_Prokaryote_Communities_Taxonomy_Data.tsv",sep="\t",append=FALSE,row.names=FALSE,col.names=TRUE,quote=FALSE)
 #Prepare metadata
 predictor_file<-"/mnt/lustre/scratch/fcoutinho/MaLME/Salazar_et_al_2019_Table_S4_TARA_Metadata.tsv"
 
 raw_predictor_df<-read.table(file=predictor_file,sep="\t",header=TRUE,quote="",comment="",stringsAsFactors=TRUE)
 
 dim(raw_predictor_df)
-summary(raw_predictor_df)
 
-colnames(raw_predictor_df)[1]<-"MG_UID"
+
+colnames(raw_predictor_df)[1]<-"Sample_UID"
+
+summary(raw_predictor_df)
 
 write.table(raw_predictor_df,file="/mnt/lustre/scratch/fcoutinho/MaLME/Marine_Prokaryote_Communities_Sample_Metadata.tsv",sep="\t",append=FALSE,row.names=FALSE,col.names=TRUE,quote=FALSE)
 
@@ -80,3 +83,50 @@ div_metrics<-merge(div_metrics,raw_predictor_df,by.x="Sample_UID",by.y="MG_UID",
 example_df<-subset(div_metrics,select=c("Sample_UID","Shannon_Diversity_Index","Temperature","Oxygen","Depth.nominal","ChlorophyllA","Salinity","Ammonium.5m","Iron.5m"))
 
 write.table(example_df,file="/mnt/smart/users/fcoutinho/Repos/MaLME/Example_ANN_Input_Data_2_Prok.tsv",sep="\t",append=FALSE,row.names=FALSE,col.names=TRUE,quote=FALSE)
+
+
+#Prepare predictor df for RF
+colnames(raw_predictor_df)[1]<-"Sample_UID"
+
+t_raw_response_df<-as.data.frame(t(raw_response_df[,8:ncol(raw_response_df)]))
+
+t_raw_response_df$Sample_UID<-rownames(t_raw_response_df)
+
+write.table(t_raw_response_df,file="/mnt/smart/users/fcoutinho/Repos/MaLME/test.tsv",sep="\t",append=FALSE,row.names=FALSE,col.names=TRUE,quote=FALSE)
+
+t_raw_response_df$Sample_UID
+
+t_raw_response_df<-read.table(file="/mnt/smart/users/fcoutinho/Repos/MaLME/test.tsv",sep="\t",header=TRUE,quote="",comment="",stringsAsFactors=TRUE)
+
+t_raw_response_df$Sample_UID
+
+summary(t_raw_response_df[,c(1,18700:18703)])
+
+
+raw_predictor_df$Is_Polar<-FALSE
+raw_predictor_df$Is_Polar[which(raw_predictor_df$polar =="polar")]<-TRUE
+
+example_df<-as.data.frame(merge(raw_predictor_df,t_raw_response_df,by="Sample_UID",all.x=TRUE))
+
+example_df$Sample_UID<-as.factor(example_df$Sample_UID)
+
+
+summary(example_df[,1:45])
+
+write.table(example_df[,c(39:18742)],file="/mnt/smart/users/fcoutinho/Repos/MaLME/Example_RF_Input_Data_2_Prok_Full.tsv",sep="\t",append=FALSE,row.names=FALSE,col.names=TRUE,quote=FALSE)
+
+####Make a subset for RF
+raw_predictor_df<-read.table(file="/mnt/smart/users/fcoutinho/Repos/MaLME/Example_RF_Input_Data_2_Prok.tsv",sep="\t",header=TRUE,quote="",comment="",stringsAsFactors=TRUE)
+
+source("/mnt/smart/users/fcoutinho/Repos/ICM_Code/Microbiome_Analysis.R")
+
+stats_df<-calc_abund_stats(raw_predictor_df[,-1])
+
+stats_df<-calc_abund_stats(raw_bkp[,-1])
+
+valid_tax<-as.vector(stats_df$UID[which(stats_df$Prevalence >= 45)])
+
+raw_predictor_df<-subset(raw_predictor_df,select=c("Is_Polar",valid_tax))
+
+write.table(raw_predictor_df,file="/mnt/smart/users/fcoutinho/Repos/MaLME/Example_RF_Input_Data_2_Prok_Subset.tsv",sep="\t",append=FALSE,row.names=FALSE,col.names=TRUE,quote=FALSE)
+

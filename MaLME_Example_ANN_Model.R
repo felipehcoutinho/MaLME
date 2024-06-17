@@ -57,7 +57,7 @@ summary(trained_net_ts$fitted.values)
 library(Metrics)
 
 #Evaluate the performance of the model on the training set
-postResample(sub_example_df_train$Responsgit --hee_Variable,trained_net_ts$fitted.values)
+postResample(sub_example_df_train$Response_Variable,trained_net_ts$fitted.values)
 
 #Get predictions for the validation set
 valid_preds<-predict(trained_net_ts,sub_example_df_valid,type=c("raw"))
