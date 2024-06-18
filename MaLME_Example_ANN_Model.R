@@ -1,5 +1,5 @@
 #Read in the example dataset table as a Data Frame
-example_df<-read.table(file="Example_ANN_Input_Data_2_Prok.tsv",sep="\t",header=TRUE,quote="",comment="",stringsAsFactors=TRUE,row.names=1)
+example_df<-read.table(file="/mnt/smart/users/fcoutinho/Repos/MaLME/Example_Datasets/Example_ANN_Input_Data_2_Prok.tsv",sep="\t",header=TRUE,quote="",comment="",stringsAsFactors=TRUE,row.names=1)
 
 #Print a summary of the dataframe
 summary(example_df)

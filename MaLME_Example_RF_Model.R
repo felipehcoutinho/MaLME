@@ -1,5 +1,5 @@
 #Read in predictor/response table
-predictor_file<-"/mnt/smart/users/fcoutinho/Repos/MaLME/Example_RF_Input_Data_2_Prok_Subset.tsv"
+predictor_file<-"/mnt/smart/users/fcoutinho/Repos/MaLME/Example_Datasets/Example_RF_Input_Data_2_Prok_Subset.tsv"
 
 raw_predictor_df<-read.table(file=predictor_file,sep="\t",header=TRUE,quote="",comment="",stringsAsFactors=TRUE,check.names=FALSE)
 
@@ -61,8 +61,8 @@ imp_df<-as.data.frame(cbind(names(rf_model$variable.importance),rf_model$variabl
 colnames(imp_df)<-c("Predictor","Importance")
 imp_df$Importance<-as.numeric(imp_df$Importance)
 
-#Merge the importance data with the available predcitor information (e.g. Taxonomy, Metabolic traits, ecological niche, etc)
-predictor_info_df<-read.table(file="/mnt/smart/users/fcoutinho/Repos/MaLME/Marine_Prokaryote_Communities_Taxonomy_Data.tsv",sep="\t",header=TRUE,quote="",comment="",stringsAsFactors=TRUE,check.names=FALSE)
+#Merge the importance data with the available predictor information (e.g. Taxonomy, Metabolic traits, ecological niche, etc)
+predictor_info_df<-read.table(file="/mnt/smart/users/fcoutinho/Repos/MaLME/Example_Datasets/Marine_Prokaryote_Communities_Taxonomy_Data.tsv",sep="\t",header=TRUE,quote="",comment="",stringsAsFactors=TRUE,check.names=FALSE)
 
 imp_df<-merge(imp_df,predictor_info_df,by.x="Predictor",by.y="OTU_ID",all.x=TRUE)
 
@@ -78,10 +78,3 @@ theme_bw()+
 theme(legend.position="top",axis.text.x = element_text(angle = 45,hjust = 1))
 
 ggsave("RF_Example_ImportancexPhylum_Boxplot.pdf",plot=tax_imp_box,width=7,height=5,pointsize=8)
-
-
-
-
-
-
-		
