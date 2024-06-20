@@ -61,7 +61,7 @@ imp_df<-as.data.frame(cbind(names(rf_model$variable.importance),rf_model$variabl
 colnames(imp_df)<-c("Predictor","Importance")
 imp_df$Importance<-as.numeric(imp_df$Importance)
 
-#Merge the importance data with the available predictor information (e.g. Taxonomy, Metabolic traits, ecological niche, etc)
+#Merge the importance data with the available predcitor information (e.g. Taxonomy, Metabolic traits, ecological niche, etc)
 predictor_info_df<-read.table(file="/mnt/smart/users/fcoutinho/Repos/MaLME/Example_Datasets/Marine_Prokaryote_Communities_Taxonomy_Data.tsv",sep="\t",header=TRUE,quote="",comment="",stringsAsFactors=TRUE,check.names=FALSE)
 
 imp_df<-merge(imp_df,predictor_info_df,by.x="Predictor",by.y="OTU_ID",all.x=TRUE)
@@ -78,3 +78,38 @@ theme_bw()+
 theme(legend.position="top",axis.text.x = element_text(angle = 45,hjust = 1))
 
 ggsave("RF_Example_ImportancexPhylum_Boxplot.pdf",plot=tax_imp_box,width=7,height=5,pointsize=8)
+
+#Look at the top 20 most important predictors
+tax_abd_box<-ggplot(imp_df[which(imp_df$Predicton %in% top20),])+
+geom_boxplot(aes(fill=Phylum, y=log2(Importance),x=Phylum))+
+theme_bw()+
+theme(legend.position="top",axis.text.x = element_text(angle = 45,hjust = 1))
+
+ggsave("RF_Example_ImportancexPhylum_Boxplot.pdf",plot=tax_imp_box,width=7,height=5,pointsize=8)
+
+
+###Plot and compare abundances of top20 predictors
+top20<-as.vector(imp_df[order(imp_df$Importance,decreasing=TRUE)[1:20],"Predictor"])
+library(reshape2)
+
+m_abd_df<-reshape2::melt(raw_predictor_df[,c(1,which(colnames(raw_predictor_df) %in% top20))],id.vars="Response_Variable",variable.name="OTU_ID",value.name="Abundance")
+
+m_abd_df<-merge(m_abd_df,predictor_info_df,by.x="OTU_ID",by.y="OTU_ID",all.x=TRUE)
+
+library(ggsignif)
+
+m_abd_df$Response_Variable<-as.character(m_abd_df$Response_Variable)
+
+tax_abd_box<-ggplot(m_abd_df, aes(y=Abundance,x=Response_Variable))+
+geom_boxplot(aes(fill=Response_Variable))+
+theme_bw()+
+geom_signif(comparisons = list(c("TRUE","FALSE")), map_signif_level = TRUE, textsize=4,test = "wilcox.test",size=0.5,tip_length=0.03)+
+facet_wrap(Phylum ~ OTU_ID, scales = "free")
+
+ggsave("RF_Example_AbundancexGroup_Boxplot.pdf",plot=tax_abd_box,width=15,height=15,pointsize=8)
+
+
+
+
+
+		
