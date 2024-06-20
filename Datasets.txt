@@ -1,0 +1,14 @@
+	#Eukaryotes (939 x 14)
+	predictor_file<-"/mnt/lustre/scratch/fcoutinho/MaLME/Marine_Eukaryote_Communities_Sample_Metadata.tsv"
+	#Eukaryotes (676 x194)
+	response_file<-"/mnt/lustre/scratch/fcoutinho/MaLME/Marine_Eukaryote_Communities_Fraction_20-180µm_Percentage_Abundance_Data.tsv"
+
+	#Prokaryotes (180 x 38)
+	predictor_file<-"/mnt/lustre/scratch/fcoutinho/MaLME/Marine_Prokaryote_Communities_Sample_Metadata.tsv"
+	#Prokaryotes (18703 x 187)
+	response_file<-"/mnt/lustre/scratch/fcoutinho/MaLME/Marine_Prokaryote_Communities_Percentage_Abundance_Data.tsv"
+
+	#Viruses (76753 x 139)
+	predictor_file<-"/mnt/lustre/scratch/fcoutinho/MaLME/Marine_Viral_Communities_Sample_Metadata.tsv"
+	#Viruses (131 x 45)
+	response_file<-"/mnt/lustre/scratch/fcoutinho/MaLME/Marine_Virus_Communities_RPKM_Abundance_Data.tsv"
