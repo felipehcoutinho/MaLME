@@ -79,14 +79,6 @@ theme(legend.position="top",axis.text.x = element_text(angle = 45,hjust = 1))
 
 ggsave("RF_Example_ImportancexPhylum_Boxplot.pdf",plot=tax_imp_box,width=7,height=5,pointsize=8)
 
-#Look at the top 20 most important predictors
-tax_abd_box<-ggplot(imp_df[which(imp_df$Predicton %in% top20),])+
-geom_boxplot(aes(fill=Phylum, y=log2(Importance),x=Phylum))+
-theme_bw()+
-theme(legend.position="top",axis.text.x = element_text(angle = 45,hjust = 1))
-
-ggsave("RF_Example_ImportancexPhylum_Boxplot.pdf",plot=tax_imp_box,width=7,height=5,pointsize=8)
-
 
 ###Plot and compare abundances of top20 predictors
 top20<-as.vector(imp_df[order(imp_df$Importance,decreasing=TRUE)[1:20],"Predictor"])
