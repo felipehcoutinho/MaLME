@@ -3,7 +3,12 @@ https://www.w3schools.com/python
 https://www.w3schools.com/python/python_ml_getting_started.asp
 
 #Resources for learning ML
+Google ML Tutorial:
 https://developers.google.com/machine-learning
+ML Mastery Tutorials:
+https://machinelearningmastery.com/
+ML YT Channel:
+https://www.youtube.com/@misraturp
 
 #Resources for learning the basics of R
 https://www.w3schools.com/r/
@@ -16,10 +21,13 @@ https://towardsdatascience.com/tagged/model-performance
 https://towardsdatascience.com/precision-and-recall-a-comprehensive-guide-with-practical-examples-71d614e3fc43
 https://towardsdatascience.com/
 
-#A very brienf intro to ANN:
+#A very brief intro to ANN:
 https://www.youtube.com/watch?v=bfmFfD2RIcg
 https://www.youtube.com/watch?v=Mph0cWZsoV4&list=PLM8lYG2MzHmQn55ii0duXdO9QSoDF5myF
 https://developers.google.com/machine-learning/crash-course/introduction-to-neural-networks/video-lecture
+
+#Training Explained:
+https://www.youtube.com/watch?v=bfmFfD2RIcg
 
 #Hyperparameter tuning
 https://www.youtube.com/watch?v=r2TvNmAxiCU&list=PLM8lYG2MzHmQn55ii0duXdO9QSoDF5myF&index=8
