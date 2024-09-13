@@ -3,7 +3,12 @@ https://www.w3schools.com/python
 https://www.w3schools.com/python/python_ml_getting_started.asp
 
 #Resources for learning ML
+Google ML Tutorial:
 https://developers.google.com/machine-learning
+ML Mastery Tutorials:
+https://machinelearningmastery.com/
+ML YT Channel:
+https://www.youtube.com/@misraturp
 
 #Resources for learning the basics of R
 https://www.w3schools.com/r/
@@ -16,10 +21,13 @@ https://towardsdatascience.com/tagged/model-performance
 https://towardsdatascience.com/precision-and-recall-a-comprehensive-guide-with-practical-examples-71d614e3fc43
 https://towardsdatascience.com/
 
-#A very brienf intro to ANN:
+#A very brief intro to ANN:
 https://www.youtube.com/watch?v=bfmFfD2RIcg
 https://www.youtube.com/watch?v=Mph0cWZsoV4&list=PLM8lYG2MzHmQn55ii0duXdO9QSoDF5myF
 https://developers.google.com/machine-learning/crash-course/introduction-to-neural-networks/video-lecture
+
+#Training Explained:
+https://www.youtube.com/watch?v=bfmFfD2RIcg
 
 #Hyperparameter tuning
 https://www.youtube.com/watch?v=r2TvNmAxiCU&list=PLM8lYG2MzHmQn55ii0duXdO9QSoDF5myF&index=8
@@ -37,13 +45,12 @@ https://en.wikipedia.org/wiki/Receiver_operating_characteristic
 https://rdrr.io/cran/caret/man/recall.html
 
 #Recommended reading
-1. Crisci, C., Ghattas, B. & Perera, G. A review of supervised machine learning algorithms and
-their applications to ecological data. Ecol. Modell. 240, 113–122 (2012).
-2. Larsen, P. E., Field, D. & Gilbert, J. a. Predicting bacterial community assemblages using an
-artificial neural network approach. Nat. Methods 9, 621–5 (2012).
-3. Larsen, P. E. et al. Satellite remote sensing data can be used to model marine microbial
-metabolite turnover. ISME J. 9, 166–179 (2015).
-4. Cavicchioli, R. et al. Scientists’ warning to humanity: microorganisms and climate change. Nat.
-Rev. Microbiol. 17, 569–586 (2019).
-5. Sunagawa, S. et al. Tara Oceans: towards global ocean ecosystems biology. Nat. Rev. Microbiol.
-18, 428–445 (2020).
+- Asnicar, F., Thomas, A.M., Passerini, A., Waldron, L., Segata, N., 2023. Machine learning for microbiologists. Nat Rev Microbiol 1–15. https://doi.org/10.1038/s41579-023-00984-1
+- Crisci, C., Ghattas, B., Perera, G., 2012. A review of supervised machine learning algorithms and their applications to ecological data. Ecological Modelling 240, 113–122. https://doi.org/10.1016/j.ecolmodel.2012.03.001
+- Huang, C., Zhang, Z., Mao, B., Yao, X., 2023. An Overview of Artificial Intelligence Ethics. IEEE Trans. Artif. Intell. 4, 799–819. https://doi.org/10.1109/TAI.2022.3194503
+- Olden, J.D., Jackson, D.A., 2002. Illuminating the “black box”: A randomization approach for understanding variable contributions in artificial neural networks. Ecological Modelling 154, 135–150. https://doi.org/10.1016/S0304-3800(02)00064-9
+- Olden, J.D., Lawler, J.J., Poff, N.L., 2008. Machine Learning Methods Without Tears: A Primer for Ecologists. The Quarterly Review of Biology 83, 171–193. https://doi.org/10.1086/587826
+- Rubbens, P., Brodie, S., Cordier, T., Destro Barcellos, D., Devos, P., Fernandes-Salvador, J.A., Fincham, J.I., Gomes, A., Handegard, N.O., Howell, K., Jamet, C., Kartveit, K.H., Moustahfid, H., Parcerisas, C., Politikos, D., Sauzède, R., Sokolova, M., Uusitalo, L., Van den Bulcke, L., van Helmond, A.T.M., Watson, J.T., Welch, H., Beltran-Perez, O., Chaffron, S., Greenberg, D.S., Kühn, B., Kiko, R., Lo, M., Lopes, R.M., Möller, K.O., Michaels, W., Pala, A., Romagnan, J.-B., Schuchert, P., Seydi, V., Villasante, S., Malde, K., Irisson, J.-O., 2023. Machine learning in marine ecology: an overview of techniques and applications. ICES Journal of Marine Science 80, 1829–1853. https://doi.org/10.1093/icesjms/fsad100
+- Larsen, P.E., Field, D., Gilbert, J. a, 2012. Predicting bacterial community assemblages using an artificial neural network approach. Nature methods 9, 621–5. https://doi.org/10.1038/nmeth.1975
+
+
