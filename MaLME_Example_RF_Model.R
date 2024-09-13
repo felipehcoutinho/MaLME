@@ -1,5 +1,5 @@
 #Read in predictor/response table
-predictor_file<-"/mnt/smart/users/fcoutinho/Repos/MaLME/Example_Datasets/Example_RF_Input_Data_2_Prok_Subset.tsv"
+predictor_file<-"/home/felipe.coutinho/MaLME/Example_Datasets/Example_RF_Input_Data_2_Prok_Subset.tsv"
 
 raw_predictor_df<-read.table(file=predictor_file,sep="\t",header=TRUE,quote="",comment="",stringsAsFactors=TRUE,check.names=FALSE)
 
@@ -99,7 +99,6 @@ geom_signif(comparisons = list(c("TRUE","FALSE")), map_signif_level = TRUE, text
 facet_wrap(Phylum ~ OTU_ID, scales = "free")
 
 ggsave("RF_Example_AbundancexGroup_Boxplot.pdf",plot=tax_abd_box,width=15,height=15,pointsize=8)
-
 
 
 
