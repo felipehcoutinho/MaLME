@@ -44,6 +44,10 @@ https://en.wikipedia.org/wiki/Receiver_operating_characteristic
 #Precision, Recall and F1 Score with caret
 https://rdrr.io/cran/caret/man/recall.html
 
+#Ethics, Biases, and the Future of AI
+https://www.ted.com/talks/joy_buolamwini_how_i_m_fighting_bias_in_algorithms?subtitle=en
+https://www.ted.com/talks/zeynep_tufekci_we_re_building_a_dystopia_just_to_make_people_click_on_ads?subtitle=en
+
 #Recommended reading
 - Asnicar, F., Thomas, A.M., Passerini, A., Waldron, L., Segata, N., 2023. Machine learning for microbiologists. Nat Rev Microbiol 1–15. https://doi.org/10.1038/s41579-023-00984-1
 - Crisci, C., Ghattas, B., Perera, G., 2012. A review of supervised machine learning algorithms and their applications to ecological data. Ecological Modelling 240, 113–122. https://doi.org/10.1016/j.ecolmodel.2012.03.001
